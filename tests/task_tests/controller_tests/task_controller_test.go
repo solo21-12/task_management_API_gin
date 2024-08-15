@@ -4,6 +4,8 @@ import (
 	// "bytes"
 	// "bytes"
 	// "encoding/json"
+	"bytes"
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -50,68 +52,68 @@ func (suite *TaskControllerSuite) TearDownSuite() {
 	suite.ctrl.Finish()
 }
 
-// func (suite *TaskControllerSuite) TestCreateTask_Success() {
-// 	taskCreate := domain.TaskCreateDTO{
-// 		Title:       "New Task",
-// 		Description: "Description",
-// 		DueDate:     fixedTime,
-// 		Status:      "pending",
-// 	}
-// 	taskDTO := domain.TaskDTO{
-// 		ID:          primitive.NewObjectID(),
-// 		Title:       "New Task",
-// 		Description: "Description",
-// 		DueDate:     fixedTime,
-// 		Status:      "pending",
-// 	}
+func (suite *TaskControllerSuite) TestCreateTask_Success() {
+	taskCreate := domain.TaskCreateDTO{
+		Title:       "New Task",
+		Description: "Description",
+		DueDate:     fixedTime,
+		Status:      "pending",
+	}
+	taskDTO := domain.TaskDTO{
+		ID:          primitive.NewObjectID(),
+		Title:       "New Task",
+		Description: "Description",
+		DueDate:     fixedTime,
+		Status:      "pending",
+	}
 
-// 	suite.usecase.
-// 		EXPECT().
-// 		CreateTask(gomock.Eq(taskCreate), gomock.Any()).
-// 		Return(taskDTO, nil).
-// 		Times(1)
+	suite.usecase.
+		EXPECT().
+		CreateTask(gomock.Eq(taskCreate), gomock.Any()).
+		Return(taskDTO, nil).
+		Times(1)
 
-// 	inputJSON, err := json.Marshal(taskCreate)
-// 	suite.NoError(err)
+	inputJSON, err := json.Marshal(taskCreate)
+	suite.NoError(err)
 
-// 	response, err := http.Post(suite.server.URL+"/tasks", "application/json", bytes.NewBuffer(inputJSON))
-// 	suite.NoError(err)
+	response, err := http.Post(suite.server.URL+"/tasks", "application/json", bytes.NewBuffer(inputJSON))
+	suite.NoError(err)
 
-// 	defer response.Body.Close()
+	defer response.Body.Close()
 
-// 	// Check the response status
-// 	suite.Equal(http.StatusCreated, response.StatusCode)
+	// Check the response status
+	suite.Equal(http.StatusCreated, response.StatusCode)
 
-// 	// Optional: Check the response body if needed
-// 	var responseDTO domain.TaskDTO
-// 	err = json.NewDecoder(response.Body).Decode(&responseDTO)
-// 	suite.NoError(err)
-// 	suite.Equal(taskDTO, responseDTO)
-// }
+	// Optional: Check the response body if needed
+	var responseDTO domain.TaskDTO
+	err = json.NewDecoder(response.Body).Decode(&responseDTO)
+	suite.NoError(err)
+	suite.Equal(taskDTO, responseDTO)
+}
 
-// func (suite *TaskControllerSuite) TestCreateTask_Failure() {
+func (suite *TaskControllerSuite) TestCreateTask_Failure() {
 
-// 	taskCreate := domain.TaskCreateDTO{
-// 		Title:       "New Task",
-// 		Description: "Description",
-// 		DueDate:     fixedTime,
-// 		Status:      "pending",
-// 	}
+	taskCreate := domain.TaskCreateDTO{
+		Title:       "New Task",
+		Description: "Description",
+		DueDate:     fixedTime,
+		Status:      "pending",
+	}
 
-// 	inputJSON, err := json.Marshal(taskCreate)
-// 	suite.NoError(err)
+	inputJSON, err := json.Marshal(taskCreate)
+	suite.NoError(err)
 
-// 	suite.usecase.
-// 		EXPECT().
-// 		CreateTask(gomock.Any(), gomock.Any()).
-// 		Return(domain.TaskDTO{}, &domain.ErrorResponse{Code: http.StatusBadRequest, Message: "Bad Request"})
+	suite.usecase.
+		EXPECT().
+		CreateTask(gomock.Any(), gomock.Any()).
+		Return(domain.TaskDTO{}, &domain.ErrorResponse{Code: http.StatusBadRequest, Message: "Bad Request"})
 
-// 	resp, err := http.Post(suite.server.URL+"/tasks", "application/json", bytes.NewBuffer(inputJSON))
-// 	if err != nil {
-// 		suite.T().Fatal(err)
-// 	}
-// 	suite.Equal(http.StatusBadRequest, resp.StatusCode)
-// }
+	resp, err := http.Post(suite.server.URL+"/tasks", "application/json", bytes.NewBuffer(inputJSON))
+	if err != nil {
+		suite.T().Fatal(err)
+	}
+	suite.Equal(http.StatusBadRequest, resp.StatusCode)
+}
 
 func (suite *TaskControllerSuite) TestGetAllTasks_Success() {
 

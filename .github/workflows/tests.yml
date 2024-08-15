@@ -46,7 +46,8 @@ jobs:
       - name: Install dependencies
         run: go mod tidy
 
-      - name: Run tests
-        run: scripts/run_tests.sh
-        env:
-          GIN_MODE: debug
+      - name: Build
+        run: make build
+
+      - name: Test
+        run: make test

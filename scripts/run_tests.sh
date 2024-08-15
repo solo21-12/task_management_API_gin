@@ -32,15 +32,4 @@ done
 test_packages_list=$(echo "$all_packages" | tr '\n' ' ')
 
 # Print the list of packages
-echo "Test packages to run:"
 echo $test_packages_list
-
-# Run tests for the filtered packages
-if [ -n "$test_packages_list" ]; then
-    echo "Running tests..."
-    go test $test_packages_list
-else
-    echo "No test packages to run."
-fi
-
-
