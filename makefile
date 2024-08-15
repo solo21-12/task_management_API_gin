@@ -23,3 +23,4 @@ test:
 test-coverage:
 	@go test -coverprofile=coverage.out $(shell go list ./... | grep -v '/repos')
 	@go tool cover -func=coverage.out
+	
