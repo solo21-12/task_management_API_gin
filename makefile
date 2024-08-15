@@ -1,11 +1,9 @@
 # Variables
-TASK = your-task
-COMMIT = your-commit
-ORIGIN = main
+
 
 # Add and commit changes
 add:
-	git add . && git commit -m 'updated(${TASK}): ${COMMIT}'
+	git add . && git commit -m 'updated(${task}): ${commit}'
 
 # Push changes to origin
 push:
