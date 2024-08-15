@@ -5,6 +5,10 @@ add:
 # Push changes to origin
 push:
 	git push origin ${ORIGIN}
+# run the project
+run:
+	@go run ./Delivery/main.go
+
 
 # Build the project
 build:
