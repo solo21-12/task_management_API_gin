@@ -1,3 +1,4 @@
+```markdown
 # Task Management API Documentation
 
 You can find the comprehensive documentation for the Task Management API at the following link:
@@ -147,54 +148,153 @@ Ensure that you have your `.env` file configured correctly and all required Go m
 go run main.go
 ```
 
+## Testing
+
+To ensure the stability and correctness of the Task Management API, you can run the tests included in the project.
+
+### Running Tests
+
+To run all tests excluding those in the `Repositories` folder, use the following command:
+
+```bash
+make test
+```
+
+To run tests with coverage and generate a coverage report, use:
+
+```bash
+make test-coverage
+```
+
+### Makefile Commands
+
+Here are the available Makefile commands for managing the project:
+
+- **Add and Commit Changes**
+
+  ```bash
+  make add
+  ```
+
+  Adds and commits changes with a message.
+
+- **Push Changes to Origin**
+
+  ```bash
+  make push
+  ```
+
+  Pushes changes to the specified origin.
+
+- **Build the Project**
+
+  ```bash
+  make build
+  ```
+
+  Builds the project and outputs the binary to `bin/task-manager`.
+
+- **Run Tests**
+
+  ```bash
+  make test
+  ```
+
+  Runs tests excluding the `Repositories` folder.
+
+- **Run Tests with Coverage**
+
+  ```bash
+  make test-coverage
+  ```
+
+  Runs tests with coverage and generates a coverage report.
+
 ## Folder Structure
 
 The project follows the Clean Architecture pattern and has the following folder structure:
 
 ```
-bootstrap
-│   ├── app.go
-│   ├── database.go
-│   └── env.go
-├── Delivery
-│   ├── controllers
-│   │   ├── login.controller.go
-│   │   ├── promote_user.controller.go
-│   │   ├── sign_up.controller.go
-│   │   └── task.controller.go
-│   ├── main.go
-│   ├── routers
-│   │   ├── login.router.go
-│   │   ├── promote.route.go
-│   │   ├── router.go
-│   │   ├── sign_up.router.go
-│   │   └── task.router.go
-│   └── tmp
-│       └── build-errors.log
-├── doc
-│   └── api_documentation.md
-├── Domain
-│   ├── error_response.go
-│   ├── jwt_custome.go
-│   ├── login.go
-│   ├── promote.go
-│   ├── sign_up.go
-│   ├── task.go
-│   ├── user.go
-│   └── validate.go
-├── go.mod
-├── go.sum
-├── Infrastructure
-│   ├── auth.middleware.go
-│   ├── get_objectID.go
-│   ├── jwt.service.go
-│   └── password.service.go
-├── Repositories
-│   ├── task_repository.go
-│   └── user_repository.go
-└── UseCases
-    ├── login.usecase.go
-    ├── promote.usecase.go
-    ├── sign_up.usecase.go
-    └── task.usecase.go
+bootstrap/
+├── app.go
+├── database.go
+├── env.go
+
+Delivery/
+├── controllers/
+│   ├── login.controller.go
+│   ├── promote_user.controller.go
+│   ├── sign_up.controller.go
+│   └── task.controller.go
+├── main.go
+├── routers/
+│   ├── login.router.go
+│   ├── promote.route.go
+│   ├── router.go
+│   ├── sign_up.router.go
+│   └── task.router.go
+└── tmp/
+    ├── build-errors.log
+    └── main
+doc/
+└── api_documentation.md
+
+Domain/
+├── auth.middleware.go
+├── error_response.go
+├── jwt_custome.go
+├── jwt.service.go
+├── login.go
+├── password.service.go
+├── promote.go
+├── sign_up.go
+├── task.go
+├── user.go
+└── validate.go
+
+Infrastructure/
+├── auth.middleware.go
+├── jwt.service.go
+└── password.service.go
+mocks/
+├── mock_auth_middler.go
+├── mock_jwt_service.go
+├── mock_login_usecase.go
+├── mock_password_service.go
+├── mock_promote_usecase.go
+├── mock_signup_repository.go
+├── mock_task.go
+└── mock_user_repository.go
+
+Repositories/
+├── task_repository.go
+└── user_repository.go
+
+tests/
+├── constants/
+│   └── user.go
+├── controllers/
+│   ├── login_controller_test.go
+│   ├── promote_controller_test.go
+│   ├── signup_controller_test.go
+│   └── task_controller_test.go
+├── Repositories/
+│   ├── task_repository_test.go
+│   └── user_repository_test.go
+└── UseCases/
+    ├── login_usecase_test.go
+    ├── promote_user_usecase_test.go
+    ├── sign_up_usecase_test.go
+    └── task_usecase_test.go
+
+UseCases/
+├── login.usecase.go
+├── promote.usecase.go
+├── sign_up.usecase.go
+└── task.usecase.go
+
+go.mod
+go.sum
+makefile
+README.md
 ```
