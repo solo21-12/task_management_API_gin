@@ -3,7 +3,6 @@ package tests
 import (
 	"context"
 	"log"
-	"path/filepath"
 	"testing"
 
 	"github.com/golang/mock/gomock"
@@ -30,8 +29,7 @@ type loginControllerSuite struct {
 }
 
 func (suite *loginControllerSuite) SetupTest() {
-	projectRoot, _ := filepath.Abs(filepath.Join("../../.."))
-	suite.ENV = bootstrap.NewEnv(projectRoot)
+	suite.ENV = bootstrap.NewEnv()
 
 	log.Println(suite.ENV.JWT_SECRET)
 

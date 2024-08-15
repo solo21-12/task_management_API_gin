@@ -2,7 +2,6 @@ package tests
 
 import (
 	"context"
-	"path/filepath"
 	"testing"
 	"time"
 
@@ -25,13 +24,13 @@ type taskUseCaseSuite struct {
 }
 
 func (suite *taskUseCaseSuite) SetupTest() {
-	projectRoot, _ := filepath.Abs(filepath.Join("../../../"))
+
 
 	suite.ctrl = gomock.NewController(suite.T())
 	suite.ctx = context.Background()
 	suite.repository = mocks.NewMockTaskRepository(suite.ctrl)
 	suite.usecase = usecases.NewTaskUseCase(suite.repository)
-	suite.ENV = bootstrap.NewEnv(projectRoot)
+	suite.ENV = bootstrap.NewEnv()
 }
 
 func (suite *taskUseCaseSuite) TearDownTest() {

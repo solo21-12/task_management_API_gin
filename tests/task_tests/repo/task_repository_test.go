@@ -2,7 +2,6 @@ package tests
 
 import (
 	"context"
-	"path/filepath"
 	"testing"
 	"time"
 
@@ -23,9 +22,8 @@ type TaskRepositorySuite struct {
 }
 
 func (suit *TaskRepositorySuite) SetupSuite() {
-	projectRoot, _ := filepath.Abs(filepath.Join("../../.."))
 
-	env := bootstrap.NewEnv(projectRoot)
+	env := bootstrap.NewEnv()
 	suit.ENV = env
 	client := bootstrap.NewMongoDatabase(env)
 

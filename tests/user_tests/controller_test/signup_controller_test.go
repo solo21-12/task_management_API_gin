@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
-	"path/filepath"
 	"testing"
 
 	"github.com/gin-gonic/gin"
@@ -31,11 +30,10 @@ type SignUpControllerTestSuite struct {
 }
 
 func (suite *SignUpControllerTestSuite) SetupSuite() {
-	projectRoot, _ := filepath.Abs(filepath.Join("../../../"))
 
 	suite.ctrl = gomock.NewController(suite.T())
 	suite.usecase = mocks.NewMockSignUpUseCase(suite.ctrl)
-	suite.ENV = *bootstrap.NewEnv(projectRoot)
+	suite.ENV = *bootstrap.NewEnv()
 	suite.jwtService = infrastructure.NewJwtService(&suite.ENV)
 	suite.controller = controllers.SignupController{
 		SignupUsecase: suite.usecase,

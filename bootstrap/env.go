@@ -2,8 +2,6 @@ package bootstrap
 
 import (
 	"log"
-	"path/filepath"
-
 	"github.com/spf13/viper"
 )
 
@@ -20,21 +18,13 @@ type Env struct {
 	TEST_TASK_COLLECTION string `mapstructure:"TEST_TASK_COLLECTION"`
 }
 
-func NewEnv(projectRoot string) *Env {
-	// This is to load the env file
+func NewEnv() *Env {
+	// Initialize viper to read from environment variables
+	viper.AutomaticEnv()
+
 	env := Env{}
 
-	// Set the path to the .env file
-	viper.SetConfigFile(filepath.Join(projectRoot, ".env"))
-
-	err := viper.ReadInConfig()
-
-	if err != nil {
-		log.Fatalf("Can't find the file .env: %v", err)
-	}
-
-	err = viper.Unmarshal(&env)
-
+	err := viper.Unmarshal(&env)
 	if err != nil {
 		log.Fatalf("Environment can't be loaded : %v", err)
 	}

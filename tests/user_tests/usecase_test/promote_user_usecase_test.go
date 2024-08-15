@@ -2,7 +2,6 @@ package tests
 
 import (
 	"context"
-	"path/filepath"
 	"testing"
 
 	"github.com/golang/mock/gomock"
@@ -23,13 +22,12 @@ type promoteUserUseCaseSuite struct {
 }
 
 func (suite *promoteUserUseCaseSuite) SetupTest() {
-	projectRoot, _ := filepath.Abs(filepath.Join("../../../"))
 
 	suite.ctrl = gomock.NewController(suite.T())
 	suite.ctx = context.Background()
 	suite.repository = mocks.NewMockUserRepository(suite.ctrl)
 	suite.usecase = usecases.NewPromoteUseCase(suite.repository)
-	suite.ENV = bootstrap.NewEnv(projectRoot)
+	suite.ENV = bootstrap.NewEnv()
 }
 
 func (suite *promoteUserUseCaseSuite) TearDownTest() {

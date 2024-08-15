@@ -2,7 +2,6 @@ package tests
 
 import (
 	"context"
-	"path/filepath"
 
 	// "log"
 	"testing"
@@ -30,7 +29,6 @@ type signUpUseCaseSuite struct {
 }
 
 func (suite *signUpUseCaseSuite) SetupTest() {
-	projectRoot, _ := filepath.Abs(filepath.Join("../../../"))
 
 	suite.ctrl = gomock.NewController(suite.T())
 	suite.ctx = context.Background()
@@ -38,7 +36,7 @@ func (suite *signUpUseCaseSuite) SetupTest() {
 	suite.repository = mocks.NewMockUserRepository(suite.ctrl)
 	suite.passwordService = infrastructure.NewPasswordService()
 	suite.usecase = usecases.NewSignUpUseCase(suite.repository, suite.passwordService, suite.jwtService)
-	suite.ENV = bootstrap.NewEnv(projectRoot)
+	suite.ENV = bootstrap.NewEnv()
 }
 
 func (suite *signUpUseCaseSuite) TearDownTest() {

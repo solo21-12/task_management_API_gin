@@ -2,7 +2,6 @@ package tests
 
 import (
 	"context"
-	"path/filepath"
 	"testing"
 
 	domain "github.com/solo21-12/A2SV_back_end_track/tree/main/task_seven/Domain"
@@ -23,9 +22,8 @@ type UserRepositorySuit struct {
 }
 
 func (suit *UserRepositorySuit) SetupSuite() {
-	projectRoot, _ := filepath.Abs(filepath.Join("../../.."))
 
-	env := bootstrap.NewEnv(projectRoot)
+	env := bootstrap.NewEnv()
 	client := bootstrap.NewMongoDatabase(env)
 
 	suit.DB = client.Database(env.TEST_DATABASE)

@@ -13,16 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      MONGO_URL: ${{ secrets.MONGO_URL }}
-      MONGO_DATABASE: task_manager
-      SERVER_ADDRESS: ":8081"
-      USER_COLLECTION: users
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
-      ALLOWED_USERS: admin
-      TASK_COLLECTION: tasks
-      TEST_DATABASE: test_db
-      TEST_USER_COLLECTION: user_test
-      TEST_TASK_COLLECTION: task_test
+      MONGO_URL: ${{ secrets.MONGO_URL }}
+      MONGO_DATABASE: ${{ secrets.MONGO_DATABASE }}
+      SERVER_ADDRESS: ${{ secrets.SERVER_ADDRESS }}
+      USER_COLLECTION: ${{ secrets.USER_COLLECTION }}
+      TASK_COLLECTION: ${{ secrets.TASK_COLLECTION }}
+      ALLOWED_USERS: ${{ secrets.ALLOWED_USERS }}
+      TEST_DATABASE: ${{ secrets.TEST_DATABASE }}
+      TEST_USER_COLLECTION: ${{ secrets.TEST_USER_COLLECTION }}
+      TEST_TASK_COLLECTION: ${{ secrets.TEST_TASK_COLLECTION }}
 
     steps:
       - name: Checkout code
@@ -31,7 +31,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: '1.23'
+          go-version: "1.23"
 
       - name: Cache Go modules
         uses: actions/cache@v3

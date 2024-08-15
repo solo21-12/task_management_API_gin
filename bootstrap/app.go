@@ -2,7 +2,6 @@ package bootstrap
 
 import (
 	"context"
-	"path/filepath"
 
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -13,10 +12,9 @@ type Application struct {
 }
 
 func App() Application {
-	projectRoot, _ := filepath.Abs(filepath.Join(".."))
 
 	app := Application{}
-	app.Env = NewEnv(projectRoot)
+	app.Env = NewEnv()
 
 	app.Mongo = NewMongoDatabase(app.Env)
 
