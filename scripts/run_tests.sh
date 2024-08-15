@@ -16,6 +16,10 @@ exclude_packages=(
     "github.com/solo21-12/A2SV_back_end_track/tree/main/task_seven/tests/constants"
 )
 
+# Clear Go build cache
+echo "Clearing Go build cache..."
+go clean -testcache
+
 # Find all packages with .go files in the tests directory
 all_packages=$(go list ./tests/...)
 
