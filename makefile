@@ -7,8 +7,11 @@ push:
 	git push origin ${ORIGIN}
 # run the project
 run:
-	@go run ./Delivery/main.go
-
+	docker compose up --build -d
+stop:
+	docker compose down 
+logs:
+	docker logs task-manager 
 
 # Build the project
 build:
