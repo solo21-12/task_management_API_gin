@@ -1,13 +1,16 @@
 #!/bin/bash
 
+# Exit on error
+set -e
+
 # List of packages to exclude (adjust as needed)
 exclude_packages=(
-    "github.com/solo21-12/A2SV_back_end_track/tree/main/task_seven/tests/task_tests/repo"
-    "github.com/solo21-12/A2SV_back_end_track/tree/main/task_seven/tests/user_tests/repo"
-    "github.com/solo21-12/A2SV_back_end_track/tree/main/task_seven/tests/constants"
+    "task_seven/tests/task_tests/repo"
+    "task_seven/tests/user_tests/repo"
+    "task_seven/tests/constants"
 )
 
-# Find all packages with .go files
+# Find all packages with .go files in the tests directory
 all_packages=$(go list ../tests/...)
 
 # Filter out the excluded packages
