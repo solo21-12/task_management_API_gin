@@ -3,6 +3,7 @@
 
 Welcome to the **Task Management RESTful API** built with the Gin framework. This API provides features for user authentication, user management, and task management, following the principles of Clean Architecture.
 
+
 ## 📁 Folder Structure
 
 The project is organized into the following directory structure:
@@ -154,7 +155,7 @@ Testing is crucial for maintaining the quality of the application. To run tests,
 
 ## 📜 Documentation
 
-For detailed API documentation, please refer to `doc/api_documentation.md`.
+For detailed API documentation, please refer to [Task Management API Documentation](https://documenter.getpostman.com/view/22911710/2sA3s3HAze)
 
 For more information, please visit the [GitHub repository](https://github.com/solo21-12/task_management_API_gin).
 
