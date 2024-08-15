@@ -119,14 +119,14 @@ To get started with the project:
    cd task_management_API_gin
    ```
 
-2. **Build the Project**:
-   ```sh
-   make build
-   ```
-
-3. **Run the Application**:
+2. **Run the Application**:
    ```sh
    make run
+   ```
+
+3. **stop the Application**:
+   ```sh
+   make stop
    ```
 
 4. **Run Tests**:
@@ -137,6 +137,10 @@ To get started with the project:
 5. **Run Tests with Coverage**:
    ```sh
    make test-coverage
+   ```
+6. **logs for the Application**:
+   ```sh
+   make logs
    ```
 
 ## 🧪 Testing
