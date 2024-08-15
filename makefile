@@ -1,6 +1,3 @@
-# Variables
-
-
 # Add and commit changes
 add:
 	git add . && git commit -m 'updated(${task}): ${commit}'
@@ -15,7 +12,7 @@ build:
 
 # Run tests excluding the 'repos' folder
 test:
-	@go test $(shell go list ./... | grep -v '/repos') -v
+	@go test $(shell go list ./... | grep -v '/Repositories') -v
 
 # Run tests with coverage excluding the 'repos' folder
 test-coverage:
