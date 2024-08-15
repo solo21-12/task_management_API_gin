@@ -1,6 +1,6 @@
 module github.com/solo21-12/A2SV_back_end_track/tree/main/task_seven
 
-go 1.22.5
+go 1.22
 
 require go.mongodb.org/mongo-driver v1.16.1
 

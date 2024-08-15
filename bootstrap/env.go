@@ -1,7 +1,6 @@
 package bootstrap
 
 import (
-	"log"
 	"github.com/spf13/viper"
 )
 
@@ -22,11 +21,16 @@ func NewEnv() *Env {
 	viper.AutomaticEnv()
 
 	env := Env{}
-
-	err := viper.Unmarshal(&env)
-	if err != nil {
-		log.Fatalf("Environment can't be loaded : %v", err)
-	}
+	env.MONGO_URL = viper.GetString("MONGO_URL")
+	env.MONGO_DATABASE = viper.GetString("MONGO_DATABASE")
+	env.SERVER_ADDRESS = viper.GetString("SERVER_ADDRESS")
+	env.JWT_SECRET = viper.GetString("JWT_SECRET")
+	env.USER_COLLECTION = viper.GetString("USER_COLLECTION")
+	env.TASK_COLLECTION = viper.GetString("TASK_COLLECTION")
+	env.ALLOWED_USERS = viper.GetString("ALLOWED_USERS")
+	env.TEST_DATABASE = viper.GetString("TEST_DATABASE")
+	env.TEST_USER_COLLECTION = viper.GetString("TEST_USER_COLLECTION")
+	env.TEST_TASK_COLLECTION = viper.GetString("TEST_TASK_COLLECTION")
 
 	return &env
 }

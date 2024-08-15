@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+
 	app := bootstrap.App()
 	env := app.Env
 	db := app.Mongo.Database(env.MONGO_DATABASE)

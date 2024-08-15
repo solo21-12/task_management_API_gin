@@ -16,6 +16,7 @@ func NewMongoDatabase(env *Env) *mongo.Client {
 	defer cancel()
 
 	dbURL := env.MONGO_URL
+
 	clientOptions := options.Client().ApplyURI(dbURL)
 
 	client, err := mongo.Connect(ctx, clientOptions)
