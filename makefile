@@ -16,6 +16,6 @@ test:
 
 # Run tests with coverage excluding the 'repos' folder
 test-coverage:
-	@go test -coverprofile=coverage.out $(shell go list ./... | grep -v '/repos')
+	@go test -coverprofile=coverage.out $(shell go list ./... | grep -v '/Repositories')
 	@go tool cover -func=coverage.out
 	
