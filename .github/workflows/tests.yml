@@ -1,0 +1,52 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      MONGO_URL: ${{ secrets.MONGO_URL }}
+      MONGO_DATABASE: task_manager
+      SERVER_ADDRESS: ":8081"
+      USER_COLLECTION: users
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      ALLOWED_USERS: admin
+      TASK_COLLECTION: tasks
+      TEST_DATABASE: test_db
+      TEST_USER_COLLECTION: user_test
+      TEST_TASK_COLLECTION: task_test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.20'
+
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/.module-cache
+          key: ${{ runner.os }}-go-${{ hashFiles('go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Install dependencies
+        run: go mod tidy
+
+      - name: Run tests
+        run: scripts/run_tests.sh
+        env:
+          GIN_MODE: debug
