@@ -15,11 +15,11 @@ push:
 build:
 	@go build -o bin/task-manager ./Delivery/main.go
 
-# Run tests
+# Run tests excluding the 'repos' folder
 test:
-	@go test ./tests/... -v
+	@go test $(shell go list ./... | grep -v '/repos') -v
 
-# Run tests with coverage
+# Run tests with coverage excluding the 'repos' folder
 test-coverage:
-	@go test -coverprofile=coverage.out ./tests/...
+	@go test -coverprofile=coverage.out $(shell go list ./... | grep -v '/repos')
 	@go tool cover -func=coverage.out
