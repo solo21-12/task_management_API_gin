@@ -159,7 +159,7 @@ Testing is crucial for maintaining the quality of the application. To run tests,
 
 ## 📜 Documentation
 
-For detailed API documentation, please refer to [Task Management API Documentation](https://documenter.getpostman.com/view/22911710/2sA3s3HAze)
+For detailed API documentation, please refer to [Task Management API Documentation](https://documenter.getpostman.com/view/22911710/2sA3s7j8v6)
 
 For more information, please visit the [GitHub repository](https://github.com/solo21-12/task_management_API_gin).
 
