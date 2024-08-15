@@ -67,7 +67,7 @@ func (suite *TaskControllerSuite) TestCreateTask_Success() {
 
 	suite.usecase.
 		EXPECT().
-		CreateTask(taskCreate, gomock.Any()).
+		CreateTask(gomock.Eq(taskCreate), gomock.Any()).
 		Return(taskDTO, nil).
 		Times(1)
 
@@ -81,6 +81,12 @@ func (suite *TaskControllerSuite) TestCreateTask_Success() {
 
 	// Check the response status
 	suite.Equal(http.StatusCreated, response.StatusCode)
+
+	// Optional: Check the response body if needed
+	var responseDTO domain.TaskDTO
+	err = json.NewDecoder(response.Body).Decode(&responseDTO)
+	suite.NoError(err)
+	suite.Equal(taskDTO, responseDTO)
 }
 
 func (suite *TaskControllerSuite) TestCreateTask_Failure() {

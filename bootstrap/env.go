@@ -19,7 +19,6 @@ type Env struct {
 }
 
 func NewEnv() *Env {
-	// Initialize viper to read from environment variables
 	viper.AutomaticEnv()
 
 	env := Env{}
