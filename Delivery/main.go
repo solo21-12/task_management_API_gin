@@ -19,4 +19,6 @@ func main() {
 
 	gin.Run(env.SERVER_ADDRESS)
 
+
+
 }

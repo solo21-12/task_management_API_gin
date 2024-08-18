@@ -32,5 +32,6 @@ func NewEnv() *Env {
 	env.TEST_USER_COLLECTION = viper.GetString("TEST_USER_COLLECTION")
 	env.TEST_TASK_COLLECTION = viper.GetString("TEST_TASK_COLLECTION")
 
+	
 	return &env
 }
