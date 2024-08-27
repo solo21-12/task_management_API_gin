@@ -1,5 +1,11 @@
 
 # Task Management RESTful API
+![Go](https://img.shields.io/badge/Go-1.18+-blue.svg)
+![Gin](https://img.shields.io/badge/Gin-1.7+-green.svg)
+![MongoDB](https://img.shields.io/badge/MongoDB-5.0+-brightgreen.svg)
+![Docker](https://img.shields.io/badge/Docker-20.10+-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 
 Welcome to the **Task Management RESTful API** built with the Gin framework. This API provides features for user authentication, user management, and task management, following the principles of Clean Architecture.
 
